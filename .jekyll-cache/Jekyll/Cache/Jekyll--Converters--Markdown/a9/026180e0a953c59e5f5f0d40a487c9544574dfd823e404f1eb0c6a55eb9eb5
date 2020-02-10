@@ -1,0 +1,88 @@
+I"$<h1 id="cost-function-intuition">Cost Function Intuition</h1>
+<h3 id="single-variable">Single Variable</h3>
+<p>Let h<sub>θ</sub>(x) be the hypothesis which predicts the value of target Y</p>
+
+<p>h<sub>θ</sub>(x) = θ<sub>o</sub> + θ<sub>1</sub>x</p>
+
+<p>Our goal is to choose θ<sub>o</sub> and θ<sub>1</sub> such that the error between h<sub>θ</sub>(x) and the actual target Y is minimized. Intuitively, the function of <strong>Mean Square Error</strong> comes to mind.</p>
+
+<p>Below is the cost function J(θ), where <strong><em>m</em></strong> is the number of training set:</p>
+
+<p><img src="/assets/img/oneval-cost-func.png" alt="oneval-cost-func" /></p>
+
+<h3 id="multiple-variable">Multiple Variable</h3>
+<p>Applying this to a more general problem with multi-variables:</p>
+
+<p>h<sub>θ</sub>(x) = θ<sub>o</sub> + θ<sub>1</sub>x<sub>1</sub> + θ<sub>2</sub>x<sub>2</sub> +…+ θ<sub>n</sub>x<sub>n</sub> = θ<sup>T</sup>x</p>
+
+<p>where</p>
+<ul>
+  <li>θ<sup>T</sup>x is 1 by (n+1) vector</li>
+  <li>x is (n+1) by 1 vector</li>
+  <li>x<sub>o</sub> = 1</li>
+</ul>
+
+<p><img src="/assets/img/vector-form.png" alt="vector-form" /></p>
+
+<h1 id="gradient-decent-intuition">Gradient Decent Intuition</h1>
+<p>Gradient Decent is the method used to find θ such that the cost function J(θ) is minimized.
+The intuition can be understood using a simplied version of h(θ)</p>
+
+<p>Assume h<sub>θ</sub>(x) = θ<sub>1</sub>x and we have following 3 data sets:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">x</th>
+      <th style="text-align: left">y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">9</td>
+      <td style="text-align: left">50</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">0</td>
+      <td style="text-align: left">-10</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">-10</td>
+      <td style="text-align: left">-34</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>J(θ) = <img src="/assets/img/cost-function.png" alt="cost-function.png" /></p>
+
+<p>Example, if we let θ<sub>1</sub> = 2,</p>
+
+<p>J(θ<sub>1</sub>) = [ (9 * θ<sub>1</sub> - 50)<sup>2</sup> + (0 * θ<sub>1</sub> - (-10))<sup>2</sup> + ((-10) * θ<sub>1</sub> - (-34))<sup>2</sup> ] / 6 = 220</p>
+
+<p>Below is the visualization of θ and J(θ), when θ is from [0, 7.8] with 0.2 increament:
+<img src="/assets/img/cost-fun-visual.png" alt="cost-fun-visual.png" /></p>
+
+<h1 id="normalization-function">Normalization Function</h1>
+
+<h1 id="gradient-decent-vs-normalization-function">Gradient Decent vs Normalization Function</h1>
+
+<h1 id="factors-that-speed-up-gd">Factors that speed-up G.D!</h1>
+<p>gradient decent works best when all feature are in the same range:</p>
+<ul>
+  <li>between [-1, 1] or,</li>
+  <li>between [-0.5, 0.5]</li>
+</ul>
+
+<p>Two techniques can be used:</p>
+<ul>
+  <li>feature scaling:</li>
+  <li>mean normalization</li>
+</ul>
+
+<p><img src="/assets/img/feature-scaling.png" alt="feature-scaling" /></p>
+
+<p>Where μi is the average
+si is the range or standard deviation</p>
+
+<p><img src="/assets/img/vector-form.png" alt="vector-form" /></p>
+:ET
