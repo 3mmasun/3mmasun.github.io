@@ -16,7 +16,7 @@ Our goal is to choose &theta;<sub>o</sub> and &theta;<sub>1</sub> such that the 
 
 Below is the cost function J(&theta;), where **_m_** is the number of training set:
 
-![oneval-cost-func](/blog/assets/img/oneval-cost-func.png)
+![oneval-cost-func](/assets/img/oneval-cost-func.png)
 
 ### Multiple Variable
 Applying this to a more general problem with multi-variables:
