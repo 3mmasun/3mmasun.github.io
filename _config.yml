@@ -1,4 +1,4 @@
-title: Hello, world! I'm Emma
+title: Emma's Blog
 # description: > # this means to ignore newlines until "baseurl:"
 permalink: ":title/"
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -13,7 +13,7 @@ social-twitter: 3mmasun# add your Twitter handle
 # social-facebook: # add your Facebook handle
 social-github: 3mmasun # add your Github handle
 # social-linkedin: # add your Linkedin handle
-social-email: emmasun.c@gmail.com# add your Email address
+social-email: emmasun.c@gmail.com # add your Email address
 
 # Disqus
 # discus-identifier: mr-brown # add your discus identifier
