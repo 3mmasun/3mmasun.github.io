@@ -12,6 +12,9 @@ jobs:
       - run: npm install
       - run: bundle install
       - run: bundle exec jekyll build
+      - add_ssh_keys:
+        fingerprints:
+          - "7a:5a:0e:25:31:cd:ac:0c:e4:48:a5:b9:c6:c8:df:19"
       - deploy:
           name: Deploy Release to GitHub
           command: |
