@@ -5,7 +5,7 @@ jobs:
       - image: circleci/ruby:2.4.3-node-browsers
     working_directory: ~/repo
     environment:
-      BRANCH: master
+      BRANCH: develop
       TARGET_REPO: 3mmasun/3mmasun.github.io
     steps:
       - checkout
@@ -22,8 +22,7 @@ jobs:
               git config user.name "$USER_NAME"
               git config user.email "$USER_EMAIL"
 
-              git checkout master
-              git pull origin master
+              git checkout -b master
 
               find . -maxdepth 1 ! -name '_site' ! -name '.git' ! -name '.gitignore' -exec rm -rf {} \;
               mv _site/* .
@@ -31,7 +30,7 @@ jobs:
 
               git add -fA
               git commit --allow-empty -m "$(git log develop -1 --pretty=%B)"
-              git push origin master
+              git push origin master -f
 
               echo "deployed successfully"
             fi
