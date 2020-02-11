@@ -14,7 +14,7 @@ jobs:
       - run: bundle exec jekyll build
       - add_ssh_keys:
           fingerprints:
-            - "7a:5a:0e:25:31:cd:ac:0c:e4:48:a5:b9:c6:c8:df:19"
+            - "63:0b:bd:c0:55:56:23:f8:f1:53:99:31:14:3a:b7:d4"
       - deploy:
           name: Deploy Release to GitHub
           command: |
