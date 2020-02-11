@@ -35,7 +35,7 @@ git remote add origin <repo_url_in_step_1>
 git remote -v # verification of remote
 
 # push gh-pages into remote repo
-git push remote gh-pages
+git push origin gh-pages
 ```
 
 If done correctly, the site will be available at
