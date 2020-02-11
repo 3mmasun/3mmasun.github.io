@@ -7,6 +7,10 @@ jobs:
     environment:
       BRANCH: develop
       TARGET_REPO: 3mmasun/3mmasun.github.io
+    general:
+      branches:
+        only:
+         - develop # list of branches to build
     steps:
       - add_ssh_keys:
           fingerprints:
