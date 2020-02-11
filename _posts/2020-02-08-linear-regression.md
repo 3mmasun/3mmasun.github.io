@@ -57,9 +57,41 @@ J(&theta;<sub>1</sub>) = [ (9 * &theta;<sub>1</sub> - 50)<sup>2</sup> + (0 * &th
 Below is the visualization of &theta; and J(&theta;), when &theta; is from [0, 7.8] with 0.2 increament:
 ![cost-fun-visual.png](/assets/img/cost-fun-visual.png)
 
-# Normalization Function
+Such graph indicates that the cost function is a **convex function** which means it's a single bowl shape with global minimum. This is a nice feature which means no matter where we initialize the values of parameters &theta;, gradient decent with appropriate learning rate (&alpha;) will always converge and reach the global minimu.
 
-# Gradient Decent vs Normalization Function
+# Gradient Decent Algorithm
+
+Reference taken from [Andrew Ng's ML Course on Coursera](https://www.coursera.org/learn/machine-learning/)
+Here is the formal equation of Gradient Decent, using **Batch Gradient Decent**
+
+![gradient-decent.png](/assets/img/gradient-decent.png)
+
+Key points:
+
+- x<sup>(i)</sup> is the ith row from the training set
+- x<sub>j</sub> is jth feature (column), and x<sub>0</sub> is 1
+- &alpha; is the learning rate, how big each step is
+
+### about &alpha;
+
+If &alpha; is too small, gradient decent takes long time and many iterations to converge.
+If &alpha; is too big, gradient decent will overshoot the global minimum and fail to converge.
+To know if &alpha; is good, typically one could plot J(&theta;) as function of number of iteration.
+The value of J(&theta;) should decrease quickly and evetually flattern
+
+# Normal Equation
+
+Instead of taking many iterations, normal equation is able to solve the value of &theta;<sup>T</sup> in a single step.
+&theta; = (X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y
+
+- X<sup>-1</sup> is the inverse of matrix X
+- y is the target
+
+# Gradient Decent vs Normal Equation
+
+Normal Equation does not require any iteration, nor does it require one to choose the learning rate &alpha;
+
+However, the cost of the Normal Equation is O(n<sup>3</sup>) where n is the number of features, while gradient decent is O(kn<sup>2</sup>)Thus, when data set has huge number of features, eg 10000, it's too costly to solve by normalization function. Instead, gradient decent would still be able to solve in reasonable amount of time.
 
 # Factors that speed-up G.D!
 
@@ -77,5 +109,3 @@ Two techniques can be used:
 
 Where μi is the average
 si is the range or standard deviation
-
-![vector-form](/assets/img/vector-form.png)
