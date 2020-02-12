@@ -16,7 +16,6 @@ jobs:
           fingerprints:
             - "63:0b:bd:c0:55:56:23:f8:f1:53:99:31:14:3a:b7:d4"
       - checkout
-      - run: npm install
       - run: bundle install
       - run: bundle exec jekyll build
       - deploy:
