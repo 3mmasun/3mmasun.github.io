@@ -2,7 +2,7 @@ version: 2
 jobs:
   deploy:
     docker:
-      - image: circleci/ruby:2.4-node
+      - image: circleci/ruby:2.4.3-node-browsers
     working_directory: ~/repo
     environment:
       BRANCH: develop
