@@ -17,15 +17,15 @@ Let's say we have 50 sets of data used to train a model. If we use all the data 
 However, we don't know for sure if data set 1-40 is the best for training the model; neither do we used all the data available.
 
 **Cross Validation** can solve the problem, or improve the model.
-Basically, we want to divide the data into K groups, example 5 groups below. In each iteration / training process, 4/5 groups are used to train the model, and the last one for testing.
+Basically, we want to divide the data into K groups (K-folds), example 5 groups below. In each iteration / training process, 4/5 groups are used to train the model, and the last one for testing.
 
-| Dataset 1-10 | Dataset 11-20 | Dataset 21-30 | Dataset 31-40 | Dataset 41-50 |
-| :----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-|    Train     |     Train     |     Train     |     Train     |   **TEST**    |
-|    Train     |     Train     |     Train     |   **TEST**    |     Train     |
-|    Train     |     Train     |   **TEST**    |     Train     |     Train     |
-|    Train     |   **TEST**    |     Train     |     Train     |     Train     |
-|   **TEST**   |     Train     |     Train     |     Train     |     Train     |
+| Dataset 1-8 | Dataset 9-16 | Dataset 17-24 | Dataset 25-32 | Dataset 33-40 | Dataset 41-50 |
+| :----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+|    Train     |     Train     |     Train     |     Train     |   **TEST**    |    HoldOut    |
+|    Train     |     Train     |     Train     |   **TEST**    |     Train     |    HoldOut    |
+|    Train     |     Train     |   **TEST**    |     Train     |     Train     |    HoldOut    |
+|    Train     |   **TEST**    |     Train     |     Train     |     Train     |    HoldOut    |
+|   **TEST**   |     Train     |     Train     |     Train     |     Train     |    HoldOut    |
 
 ## Hypothesis: Model trained with CV performs BETTER!
 
