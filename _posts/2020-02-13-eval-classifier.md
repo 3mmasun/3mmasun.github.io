@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Metrics used to evaluate a classifier"
-date: 2020-02-13 15:00:00 +0800
+date: 2020-02-14 15:00:00 +0800
 tags: [machine-learning, data-science]
 # img: "/assets/img/machine.jpg"
 description: Explore the ways a classifier can be evaluated
@@ -70,3 +70,5 @@ Receiver operating characteristic (ROC) curve is ploting TPR (TruePositiveRate) 
 A perfect classifier would have the Area Under Curve (AUC) equal to 1 whereas a random classifier would have AUC equal to 0.5
 
 ![roc-auc](/assets/img/roc-auc.png)
+
+Reference: [Hands-On Machine Learning with Scikit-Learn & TensorFlow](https://www.amazon.sg/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291/ref=asc_df_1491962291/?tag=googleshoppin-22&linkCode=df0&hvadid=389049662104&hvpos=&hvnetw=g&hvrand=5234344636738257138&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9062530&hvtargid=pla-337511948612&psc=1)
