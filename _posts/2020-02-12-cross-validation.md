@@ -20,12 +20,12 @@ However, we don't know for sure if data set 1-40 is the best for training the mo
 Basically, we want to divide the data into K groups (K-folds), example 5 groups below. In each iteration / training process, 4/5 groups are used to train the model, and the last one for testing.
 
 | Dataset 1-8 | Dataset 9-16 | Dataset 17-24 | Dataset 25-32 | Dataset 33-40 | Dataset 41-50 |
-| :----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-|    Train     |     Train     |     Train     |     Train     |   **TEST**    |    HoldOut    |
-|    Train     |     Train     |     Train     |   **TEST**    |     Train     |    HoldOut    |
-|    Train     |     Train     |   **TEST**    |     Train     |     Train     |    HoldOut    |
-|    Train     |   **TEST**    |     Train     |     Train     |     Train     |    HoldOut    |
-|   **TEST**   |     Train     |     Train     |     Train     |     Train     |    HoldOut    |
+| :---------: | :----------: | :-----------: | :-----------: | :-----------: | :-----------: |
+|    Train    |    Train     |     Train     |     Train     |   **TEST**    |    HoldOut    |
+|    Train    |    Train     |     Train     |   **TEST**    |     Train     |    HoldOut    |
+|    Train    |    Train     |   **TEST**    |     Train     |     Train     |    HoldOut    |
+|    Train    |   **TEST**   |     Train     |     Train     |     Train     |    HoldOut    |
+|  **TEST**   |    Train     |     Train     |     Train     |     Train     |    HoldOut    |
 
 ## Hypothesis: Model trained with CV performs BETTER!
 
@@ -40,21 +40,26 @@ from sklearn.datasets import make_regression
 X, y= make_regression(n_samples=50, n_features=1, noise=5, random_state=42)
 plt.scatter(X,y)
 ```
+
 ![50-regression-points](/assets/img/50-regression-points.png)
 
 ### Split data in 80/20 with 20% for Test
+
 ```python
 from sklearn.model_selection import train_test_split
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 print("x_train: ", x_train.size)
 print("x_test: ", x_test.size)
 ```
+
 ```bash
 # output
 x_train:  40
 x_test:  10
 ```
+
 ### Train model as baseline
+
 ```python
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
@@ -78,6 +83,7 @@ print(scores)
 ```
 
 ### Let's use Cross Validation
+
 ```python
 from sklearn.model_selection import cross_validate
 # CV is set to 5-fold
@@ -85,6 +91,7 @@ from sklearn.model_selection import cross_validate
 scores = cross_validate(linear, X, y, cv=5, return_estimator=True, scoring=('r2', 'neg_mean_squared_error'))
 print(scores)
 ```
+
 ```bash
 # output
 {'fit_time': array([0.00079298, 0.00041986, 0.00042582, 0.00053477, 0.00041199]),
@@ -98,8 +105,10 @@ print(scores)
  'test_neg_mean_squared_error': array([-28.66454405, -15.60107755, -47.62231841,  -6.01442767,
         -34.90107707])}
 ```
+
 We can see the 4th model performs the best, with R^2 =0.95260985, and mse=-6.01442767.
 Using the best model to predict:
+
 ```python
 best_model = scores["estimator"][3]
 y_train_pred_cv = best_model.predict(x_train)
@@ -115,6 +124,7 @@ scores_cv["test set"] = {
     "mse": mean_squared_error(y_test, y_test_pred_cv)}
 print(scores_cv)
 ```
+
 ```bash
 # output
 {'training set': {'r_2': 0.9051641686456118, 'mse': 21.463226386636407},
@@ -122,7 +132,9 @@ print(scores_cv)
 ```
 
 # Conclusion
+
 The model trained with CV performs better compared to the baseline, as
+
 - R^2 is higher, 0.725 vs 0.676
 - mse is lower, 31 vs 36
 

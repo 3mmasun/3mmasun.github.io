@@ -2,7 +2,7 @@
 layout: post
 title: "Metrics used to evaluate a classifier"
 date: 2020-02-14 15:00:00 +0800
-tags: [machine-learning, data-science]
+tags: [statistics, ml-metrics, classification]
 # img: "/assets/img/machine.jpg"
 description: Explore the ways a classifier can be evaluated
 ---
