@@ -33,7 +33,7 @@ None of the scores alone can determine how good a model performs. There is alway
 
 ### When do we prefer high precision?
 
-When we cannot affort to miss out any positive cases. Eg, detecting whether a video is safe for children.
+When we cannot affort the mistake of False Postive. Eg, detecting whether a video is safe for children.
 
 Another way of thinking is that, we are more _reluctant_ to label things as POSITIVE
 
