@@ -52,6 +52,7 @@ A few way to overcome this:
 - max depth: how deep the decision tree will be
 
 # Code Example
+
 [kaggle Heart Disease Dataset](https://www.kaggle.com/johnsmith88/heart-disease-dataset)
 
 ```python
@@ -99,3 +100,30 @@ plt.plot(fpr, tpr)
 ```
 
 ![roc-dt](/assets/img/roc-dt.png)
+
+# RandomForest
+
+A subset of features and a subset of samples are selected to build a bunch of shorter and simpler trees.
+
+Collectively, they predict the result and the majority vote will be selected.
+
+Regarding sampling for each tree, there are 2 main approaches:
+
+1. **BAGGING**: short for boostrap aggregation, which is sampling with replacement, allowing each record to be sampled multiple times for every predictor (aka tree)
+2. **PASTING**: sampling without replacement.
+
+### Code Example
+
+```python
+# random forest
+from sklearn.ensemble import RandomForestClassifier
+rnd_clf = RandomForestClassifier()
+rnd_clf.fit(x_train, y_train)
+y_pred = rnd_clf.predict(x_test)
+
+# bagging classifier
+from sklearn.ensemble import BaggingClassifier
+bag_clf = BaggingClassifier( DecisionTreeClassifier(), n_estimators=500, max_samples=100, bootstrap=True, n_jobs=-1)
+bag_clf.fit(x_train, y_train)
+y_pred = bag_clf.predict(x_test)
+```
