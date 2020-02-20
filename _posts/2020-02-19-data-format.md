@@ -3,41 +3,49 @@ layout: post
 title: "Exploring Data Formats"
 date: 2020-02-20 11:00:00 +0800
 tags: [data-engineering]
-# img: "/assets/img/machine.jpg"
+img: norway01.jpeg
 description: explore pros and cons of different data formats
 ---
 
 # JSON - key value pair
+
 pros:
+
 - readability
 - serialize / deserialize tools
 - some type
-cons:
+  cons:
 - not able to split up the file
 - repeated keys for every record => wasted space
 - not fully typed
 
 # CSV
+
 pros:
+
 - readability
-cons:
+  cons:
 - not able to split up the file
 - no types
 - require pre-process to clean up unwanted strings
 
 # avro
+
 pros:
+
 - binary
 - typed
 - schema attached
 - fast to write
 - schema evolution fully supported
-cons:
+  cons:
 - slow lookup
 - slow aggregation
 
 # parquet
+
 pros:
+
 - binary
 - typed
 - schema attached
@@ -45,7 +53,7 @@ pros:
 - fast lookup
 - fast aggregation
 - compressed well
-cons:
+  cons:
 - slow to write
 - slow to update and delte
 
