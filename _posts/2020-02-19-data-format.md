@@ -14,7 +14,9 @@ pros:
 - readability
 - serialize / deserialize tools
 - some type
-  cons:
+
+cons:
+
 - not able to split up the file
 - repeated keys for every record => wasted space
 - not fully typed
@@ -24,7 +26,9 @@ pros:
 pros:
 
 - readability
-  cons:
+
+cons:
+
 - not able to split up the file
 - no types
 - require pre-process to clean up unwanted strings
@@ -38,7 +42,9 @@ pros:
 - schema attached
 - fast to write
 - schema evolution fully supported
-  cons:
+
+cons:
+
 - slow lookup
 - slow aggregation
 
@@ -53,8 +59,10 @@ pros:
 - fast lookup
 - fast aggregation
 - compressed well
-  cons:
+
+cons:
+
 - slow to write
 - slow to update and delte
 
-Credit to https://github.com/arunma/DataFormats-Scala
+Credit to [https://github.com/arunma/DataFormats-Scala](https://github.com/arunma/DataFormats-Scala)

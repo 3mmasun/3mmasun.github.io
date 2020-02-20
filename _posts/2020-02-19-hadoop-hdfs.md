@@ -27,10 +27,22 @@ A real-time standby Namenode that is in-sync with the primay namenode. Usually s
 
 # HDFS well explained
 
-https://wiki.scc.kit.edu/gridkaschool/upload/1/18/Hdfs-cartoon.pdf
+[Cartoon version](https://wiki.scc.kit.edu/gridkaschool/upload/1/18/Hdfs-cartoon.pdf)
 
+## Text version
+
+### Write operation
+
+- client initiate a request to namenode, stating the block size, file fize
+- namenode reply with list of datanodes for each partition
+- client starts transfer to 1st datanode for each partition
+- datanode writes into disk and copy to other datanodes
+- all datanodes inform namenode that they have completed the write operation
+- namenode writes metadata of and close file
+- namenode inform client write is completed and successful
 
 # local setup
+
 ```shell
 # gen key
 ssh-keygen -t rsa -P ''
@@ -60,6 +72,8 @@ hdfs dfs -mkdir /user
 sbin/start-all.sh
 ```
 
-Reference
-https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html
-https://medium.com/@thedsa.in/install-hadoop-3-2-setting-up-a-single-node-hadoop-cluster-22a5754bd9fc
+### Reference
+
+[hadoop single cluster setup](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html)
+
+[single node setup by @thedsa.in](https://medium.com/@thedsa.in/install-hadoop-3-2-setting-up-a-single-node-hadoop-cluster-22a5754bd9fc)
