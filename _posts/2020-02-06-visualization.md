@@ -20,7 +20,27 @@ pip3 install matplotlib seaborn
 jupyter notebook
 ```
 
-### What are the different charts
+## What are the different charts
+A reference taken from Kaggle
+
+![different charts](https://i.imgur.com/2VmgDnF.png)
+
+### To visualize relationships:
+- sns.pairplot
+- sns.heatmap(df.corr())
+- sns.scatterplot
+- sns.barplot
+
+### To visualize distribution:
+- sns.jointplot
+- sns.scatterplot with alpha to show density
+- sns.distplot
+- sns.kdeplot
+
+### To visualize trends:
+- sns.swarmplot
+- sns.regplot
+- sns.lmplot
 
 ### Cheatsheet
 
