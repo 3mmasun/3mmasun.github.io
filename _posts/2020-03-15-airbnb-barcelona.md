@@ -12,6 +12,7 @@ This post documents the steps involved training a simple model to predict the pr
 - Training the model
 - Encode model and upload
 
+The repository is [here](https://github.com/3mmasun/airbnb-ml) if you would like to check the code.
 
 # Data Exploring
 Airbnb data can be obtained from [http://insideairbnb.com/get-the-data.html](http://insideairbnb.com/get-the-data.html)
