@@ -3,7 +3,7 @@ layout: post
 title: "Airbnb Barcelona Price Prediction"
 date: 2020-03-15 10:00:00 +0800
 tags: [machine-learning]
-img: "/assets/img/barcelona.jpeg"
+img: barcelona.jpeg
 description: explore data cleaning and transformation
 ---
 

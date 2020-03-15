@@ -2,8 +2,6 @@
 layout: post
 title: "Blog with Githut Pages"
 date: 2020-02-05 09:00:00 +0800
-# img: "/assets/img/machine.jpg"
-# description:
 tags: [github-pages]
 ---
 

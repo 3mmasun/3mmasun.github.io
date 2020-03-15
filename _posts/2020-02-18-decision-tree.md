@@ -3,7 +3,6 @@ layout: post
 title: "Decision Tree"
 date: 2020-02-14 15:00:00 +0800
 tags: [machine-learning, classification]
-# img: "/assets/img/machine.jpg"
 description: Explore the ways a classifier can be evaluated
 ---
 

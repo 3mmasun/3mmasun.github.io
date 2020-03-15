@@ -3,7 +3,6 @@ layout: post
 title: "Logistic Regression"
 date: 2020-02-13 15:00:00 +0800
 tags: [machine-learning, Classification]
-# img: "/assets/img/machine.jpg"
 description: Basics of logistic regression
 ---
 

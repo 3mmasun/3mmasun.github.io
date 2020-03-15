@@ -3,7 +3,6 @@ layout: post
 title: "Cross Validation"
 date: 2020-02-12 16:00:00 +0800
 tags: [machine-learning, data-science]
-# img: "/assets/img/machine.jpg"
 description: explore the impact on model with or without cross validation
 ---
 

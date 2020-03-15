@@ -3,8 +3,6 @@ layout: post
 title: "Pandas Basics"
 date: 2020-02-05 16:00:00 +0800
 tags: [machine-learning, data-science, pandas]
-# img: "/assets/img/machine.jpg"
-# description:
 ---
 
 ### Installation

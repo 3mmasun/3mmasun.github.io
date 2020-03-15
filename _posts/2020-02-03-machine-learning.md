@@ -2,8 +2,6 @@
 layout: post
 title: "Machine Learning"
 date: 2020-02-03 16:00:00 +0300
-# img: "/assets/img/machine.jpg"
-# description:
 tags: [machine-learning, data-science]
 ---
 

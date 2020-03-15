@@ -3,8 +3,6 @@ layout: post
 title: "Visualization"
 date: 2020-02-06 16:00:00 +0800
 tags: [machine-learning, data-science]
-# img: "/assets/img/machine.jpg"
-# description:
 ---
 
 ### Installation

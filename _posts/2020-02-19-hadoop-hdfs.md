@@ -3,7 +3,6 @@ layout: post
 title: "Setup Hadoop HDFS Locally"
 date: 2020-02-19 11:00:00 +0800
 tags: [data-engineering]
-# img: "/assets/img/machine.jpg"
 description: local setup
 ---
 

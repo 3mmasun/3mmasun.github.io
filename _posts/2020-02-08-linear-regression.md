@@ -3,8 +3,6 @@ layout: post
 title: "Linear Regression"
 date: 2020-02-08 16:00:00 +0800
 tags: [machine-learning, regression]
-# img: "/assets/img/machine.jpg"
-# description:
 ---
 
 # Linear Regression - Cost Function Intuition
