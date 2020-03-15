@@ -22,12 +22,10 @@ Airbnb data can be obtained from [http://insideairbnb.com/get-the-data.html](htt
 
 Here we used the data from Dec 2019 for Barcelona, Spain. You can obtain a copy [here](https://github.com/3mmasun/airbnb-ml/tree/master/barcelona-12-2019)
 
-The original data in listings.csv.gz has over 100 columns, the final data frame used for price prediction only had 43 columns including 'Price' target. Many of them were dropped because they were mostly no value, or same value, or duplicate of other columns.
+The original data in listings.csv.gz has over 100 columns, the final data frame used for price prediction only had 43 columns including 'Price' target. Many of them were dropped because they were mostly no value, or same value, or has high correlation with other columns.
 
 
 ## Object Columns
-
-`cat_df = airbnb_df.select_dtypes(include=['object']).copy()`
 
 | Column                           | Transformation                                                                        |
 | -------------------------------- | ------------------------------------------------------------------------------------- |
@@ -51,7 +49,7 @@ The original data in listings.csv.gz has over 100 columns, the final data frame 
 
 ## Numeric Columns
 
-`numeric_df = airbnb_df.select_dtypes(include=['float64', 'int32']).copy()`
+All na were filled with mean
 
 | Column                                       |
 | -------------------------------------------- |
@@ -83,13 +81,21 @@ The original data in listings.csv.gz has over 100 columns, the final data frame 
 | review_per_month                             |
 
 ## Folder structure
-```
+```bash
 airbnb-ml
+  |-- notebooks # experimental
+  |-- models # exported models
   |-- src
     |-- transform.py
-    |-- __init__.py
+    |-- const.py
+    |-- pipeline.py
+    |-- app.py # flask app for price prediction
+    |-- __init__.py # makes everything in src folder an package
     |-- tests
       |-- test_transform.py
+  |-- Dockerfile # to dockerize prediction app
+  |-- requirements.txt
+  |-- requirements-dev.txt
 ```
 
 ## Testing Framework
