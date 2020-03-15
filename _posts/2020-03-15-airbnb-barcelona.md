@@ -3,9 +3,10 @@ layout: post
 title: "Airbnb Barcelona Price Prediction"
 date: 2020-03-15 10:00:00 +0800
 tags: [machine-learning]
-# img: "/assets/img/machine.jpg"
+img: "/assets/img/barcelona.jpeg"
 description: explore data cleaning and transformation
 ---
+
 This post documents the steps involved training a simple model to predict the price in Airbnb Barcelona listing, covering following section:
 - Data Exploring
 - Transformation
@@ -13,6 +14,8 @@ This post documents the steps involved training a simple model to predict the pr
 - Encode model and upload
 
 The repository is [here](https://github.com/3mmasun/airbnb-ml) if you would like to check the code.
+
+[image source](https://images.unsplash.com/photo-1539037116277-4db20889f2d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80)
 
 # Data Exploring
 Airbnb data can be obtained from [http://insideairbnb.com/get-the-data.html](http://insideairbnb.com/get-the-data.html)
