@@ -40,7 +40,7 @@ That's when I decided to leave and see for myself how modern techologies help wi
 ## A Year Later
 ThoughtWorks is a company where many of the Agile practices originated from. During this one year, I have worked on a few projects that really exposed me to many of modern technologies. Here I have listed a few libraries and services that I have used, ranging from self-exploration to real client projects.
 
-Althought I am more familiar with some more than the others, I am far from an expert in many areas. However the point to show the enormous amount of knowledge out there waiting to acquired in order to be proficient in today's IT world. And the knowledge base is ever growing. I don't think it's possible for anyone to be expert in all of these aspects but it is certainly beneficial to have a bit of knowledge in as many things as possbile.
+Althought I am more familiar with some more than the others, I am far from an expert in many areas. However the point to show the enormous amount of knowledge out there waiting to be acquired in order to be proficient in today's IT world. And the knowledge base is ever growing. I don't think it's possible for anyone to be expert in all of these aspects but it is certainly beneficial to have a bit of knowledge in as many things as possbile.
 
 ### Frontend Development
 - `React` Frontend Library
@@ -74,7 +74,7 @@ Althought I am more familiar with some more than the others, I am far from an ex
 
 
 ## Moving Forward
-Technology is advancing so fast and learning should never cease. However I do feel overwhelmed sometimes by the amount of new things out there. Will I be able to keep up with the learning pace, say 15 or 20 years from now?
+Technology is advancing so fast and learning should never cease. However, I do feel overwhelmed sometimes by the amount of new things out there. Will I be able to keep up with the learning pace, say 15 or 20 years from now?
 
 I don't have the answer but I am happy to be just better than yesterday, even just a little.
 Happy anniversary!
