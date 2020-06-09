@@ -22,9 +22,9 @@ Internally within IT, manual testing result was even more troubling,
 
 Now IT not only has to fix the bugs, but also need to work on the changed requirements. Afterall, what use does the new system have if it cannot perform better than the old one?
 
-What comes next must not be foreign to many of us. Each release is now followed by intensive manual testing and issue reporting. There were so much testing to do, sometimes we had to pull in people who had little knowledge of the system. As a result, exensive effort is required to produce and maintain and the test documentations such that EVERYONE is able to just take it and execute it.
+What comes next must not be foreign to many of us. Each release is now followed by intensive manual testing and issue reporting. There were so much testing to do, sometimes we had to pull in people who had little knowledge of the system. As a result, extensive effort is required to produce and maintain and the test documentations such that EVERYONE is able to just take it and execute it.
 
-What about test reports, progress tracking and reconcililing? It was all too manual and painful. We simply couldn't release fast enough to catch-up with the ever growing list. Release dates missed, relationships tensed.
+What about test reports, progress tracking and reconciling? It was all too manual and painful. We simply couldn't release fast enough to catch-up with the ever growing list. Release dates missed, relationships tensed.
 
 Some of these projects went to PRODUCTION eventually, but followed immediately by days' if not weeks' of fire-fighting. Some, didn't make it and may never will.
 
