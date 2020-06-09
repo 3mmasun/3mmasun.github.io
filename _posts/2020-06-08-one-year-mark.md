@@ -26,7 +26,7 @@ What comes next must not be foreign to many of us. Each release is now followed 
 
 What about test reports, progress tracking and reconcililing? It was all too manual and painful. We simply couldn't release fast enough to catch-up with the ever growing list. Release dates missed, relationships tensed.
 
-Some of these projects went to PRODUCTION eventually, but followed immediately by weeks if not month's of fire-fighting. Some, didn't make it and may never will.
+Some of these projects went to PRODUCTION eventually, but followed immediately by days' if not weeks' of fire-fighting. Some, didn't make it and may never will.
 
 After history repeats itself again and again, I can't stop thinking: `Is this the best we can do?`.
 
