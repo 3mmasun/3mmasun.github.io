@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Linear Regression - Emma's Blog</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="Emma's Blog" property="og:site_name">
+  
+    <meta content="Linear Regression" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="" property="og:description">
+  
+  
+    <meta content="/linear-regression/" property="og:url">
+  
+  
+    <meta content="2020-02-08T08:00:00+00:00" property="article:published_time">
+    <meta content="/about/" property="article:author">
+  
+  
+    <meta content="/assets/img/emma.jpg" property="og:image">
+  
+  
+    
+  
+  
+    
+    <meta content="machine-learning" property="article:tag">
+    
+    <meta content="regression" property="article:tag">
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@3mmasun# add your Twitter handle">
+  
+    <meta name="twitter:title" content="Linear Regression">
+  
+  
+    <meta name="twitter:url" content="/linear-regression/">
+  
+  
+    <meta name="twitter:description" content="">
+  
+  
+    <meta name="twitter:image:src" content="/assets/img/emma.jpg">
+  
+
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/favicon-32x32.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicon/apple-touch-icon.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/"><img src="/assets/img/emma.jpg" alt="Emma Sun"></a>
+      </div>
+      <div class="author-name">Emma Sun</div>
+      <p>I am an Application Developer, exploring Data Engineering recently.</p>
+    </div>
+  </header>
+  <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contact me</h3>
+      <ul>
+        <li>
+          <a href="https://twitter.com/3mmasun# add your Twitter handle" target="_blank">
+            <i aria-hidden="true" class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="https://facebook.com/" target="_blank">
+            <i aria-hidden="true" class="fa fa-facebook"></i>
+          </a>
+        </li> -->
+        <li class="github">
+          <a href="http://github.com/3mmasun" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+        </li>
+        <!-- <li class="linkedin">
+          <a href="https://in.linkedin.com/in/" target="_blank">
+            <i class="fa fa-linkedin"></i>
+          </a>
+        </li> -->
+        <li class="email">
+          <a href="mailto:emmasun.c@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2020
+        &copy;
+        Emma Sun</p>
+    </div>
+  </footer>
+  <!-- End Footer -->
+</aside>
+<!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">Linear Regression</h1>
+        <div class="page-date"><span>2020, Feb 08&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <h1 id="linear-regression---cost-function-intuition">Linear Regression - Cost Function Intuition</h1>
+
+<h3 id="single-variable">Single Variable</h3>
+
+<p>Let h<sub>θ</sub>(x) be the hypothesis which predicts the value of target Y</p>
+
+<p>h<sub>θ</sub>(x) = θ<sub>o</sub> + θ<sub>1</sub>x</p>
+
+<p>Our goal is to choose θ<sub>o</sub> and θ<sub>1</sub> such that the error between h<sub>θ</sub>(x) and the actual target Y is minimized. Intuitively, the function of <strong>Mean Square Error</strong> comes to mind.</p>
+
+<p>Below is the cost function J(θ), where <strong><em>m</em></strong> is the number of training set:</p>
+
+<p><img src="/assets/img/oneval-cost-func.png" alt="oneval-cost-func" /></p>
+
+<h3 id="multiple-variable">Multiple Variable</h3>
+
+<p>Applying this to a more general problem with multi-variables:</p>
+
+<p>h<sub>θ</sub>(x) = θ<sub>o</sub> + θ<sub>1</sub>x<sub>1</sub> + θ<sub>2</sub>x<sub>2</sub> +…+ θ<sub>n</sub>x<sub>n</sub> = θ<sup>T</sup>x</p>
+
+<p>where</p>
+
+<ul>
+  <li>θ<sup>T</sup>x is 1 by (n+1) vector</li>
+  <li>x is (n+1) by 1 vector</li>
+  <li>x<sub>o</sub> = 1</li>
+</ul>
+
+<p><img src="/assets/img/vector-form.png" alt="vector-form" /></p>
+
+<h1 id="gradient-decent-intuition">Gradient Decent Intuition</h1>
+
+<p>Gradient Decent is the method used to find θ such that the cost function J(θ) is minimized.
+The intuition can be understood using a simplied version of h(θ)</p>
+
+<p>Assume h<sub>θ</sub>(x) = θ<sub>1</sub>x and we have following 3 data sets:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">x</th>
+      <th style="text-align: left">y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">9</td>
+      <td style="text-align: left">50</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">0</td>
+      <td style="text-align: left">-10</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">-10</td>
+      <td style="text-align: left">-34</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>J(θ) = <img src="/assets/img/cost-function.png" alt="cost-function.png" /></p>
+
+<p>Example, if we let θ<sub>1</sub> = 2,</p>
+
+<p>J(θ<sub>1</sub>) = [ (9 * θ<sub>1</sub> - 50)<sup>2</sup> + (0 * θ<sub>1</sub> - (-10))<sup>2</sup> + ((-10) * θ<sub>1</sub> - (-34))<sup>2</sup> ] / 6 = 220</p>
+
+<p>Below is the visualization of θ and J(θ), when θ is from [0, 7.8] with 0.2 increament:
+<img src="/assets/img/cost-fun-visual.png" alt="cost-fun-visual.png" /></p>
+
+<p>Such graph indicates that the cost function is a <strong>convex function</strong> which means it’s a single bowl shape with global minimum. This is a nice feature which means no matter where we initialize the values of parameters θ, gradient decent with appropriate learning rate (α) will always converge and reach the global minimu.</p>
+
+<h1 id="gradient-decent-algorithm">Gradient Decent Algorithm</h1>
+
+<p>Reference taken from <a href="https://www.coursera.org/learn/machine-learning/">Andrew Ng’s ML Course on Coursera</a>
+Here is the formal equation of Gradient Decent, using <strong>Batch Gradient Decent</strong></p>
+
+<p><img src="/assets/img/gradient-decent.png" alt="gradient-decent.png" /></p>
+
+<p>Key points:</p>
+
+<ul>
+  <li>x<sup>(i)</sup> is the ith row from the training set</li>
+  <li>x<sub>j</sub> is jth feature (column), and x<sub>0</sub> is 1</li>
+  <li>α is the learning rate, how big each step is</li>
+</ul>
+
+<h3 id="about-α">about α</h3>
+
+<p>If α is too small, gradient decent takes long time and many iterations to converge.
+If α is too big, gradient decent will overshoot the global minimum and fail to converge.
+To know if α is good, typically one could plot J(θ) as function of number of iteration.
+The value of J(θ) should decrease quickly and evetually flattern</p>
+
+<h1 id="normal-equation">Normal Equation</h1>
+
+<p>Instead of taking many iterations, normal equation is able to solve the value of θ<sup>T</sup> in a single step.
+θ = (X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y</p>
+
+<ul>
+  <li>X<sup>-1</sup> is the inverse of matrix X</li>
+  <li>y is the target</li>
+</ul>
+
+<h1 id="gradient-decent-vs-normal-equation">Gradient Decent vs Normal Equation</h1>
+
+<p>Normal Equation does not require any iteration, nor does it require one to choose the learning rate α</p>
+
+<p>However, the cost of the Normal Equation is O(n<sup>3</sup>) where n is the number of features, while gradient decent is O(kn<sup>2</sup>)Thus, when data set has huge number of features, eg 10000, it’s too costly to solve by normalization function. Instead, gradient decent would still be able to solve in reasonable amount of time.</p>
+
+<h1 id="factors-that-speed-up-gd">Factors that speed-up G.D!</h1>
+
+<p>gradient decent works best when all feature are in the same range:</p>
+
+<ul>
+  <li>between [-1, 1] or,</li>
+  <li>between [-0.5, 0.5]</li>
+</ul>
+
+<p>Two techniques can be used:</p>
+
+<ul>
+  <li>feature scaling:</li>
+  <li>mean normalization</li>
+</ul>
+
+<p><img src="/assets/img/feature-scaling.png" alt="feature-scaling" /></p>
+
+<p>Where μi is the average
+si is the range or standard deviation</p>
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=Linear Regression&url=/linear-regression/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=/linear-regression/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=/linear-regression/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+            <a href="/tags#machine-learning" class="tag">&#35; machine-learning</a>
+          
+            <a href="/tags#regression" class="tag">&#35; regression</a>
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>

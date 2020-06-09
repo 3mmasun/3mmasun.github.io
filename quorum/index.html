@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Quorum in Distributed Computing - Emma's Blog</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="Emma's Blog" property="og:site_name">
+  
+    <meta content="Quorum in Distributed Computing" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="why are nodes always odd number?" property="og:description">
+  
+  
+    <meta content="/quorum/" property="og:url">
+  
+  
+    <meta content="2020-03-12T02:00:00+00:00" property="article:published_time">
+    <meta content="/about/" property="article:author">
+  
+  
+    <meta content="/assets/img/emma.jpg" property="og:image">
+  
+  
+    
+  
+  
+    
+    <meta content="distributed-computing" property="article:tag">
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@3mmasun# add your Twitter handle">
+  
+    <meta name="twitter:title" content="Quorum in Distributed Computing">
+  
+  
+    <meta name="twitter:url" content="/quorum/">
+  
+  
+    <meta name="twitter:description" content="why are nodes always odd number?">
+  
+  
+    <meta name="twitter:image:src" content="/assets/img/emma.jpg">
+  
+
+	<meta name="description" content="why are nodes always odd number?">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/favicon-32x32.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicon/apple-touch-icon.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/"><img src="/assets/img/emma.jpg" alt="Emma Sun"></a>
+      </div>
+      <div class="author-name">Emma Sun</div>
+      <p>I am an Application Developer, exploring Data Engineering recently.</p>
+    </div>
+  </header>
+  <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contact me</h3>
+      <ul>
+        <li>
+          <a href="https://twitter.com/3mmasun# add your Twitter handle" target="_blank">
+            <i aria-hidden="true" class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="https://facebook.com/" target="_blank">
+            <i aria-hidden="true" class="fa fa-facebook"></i>
+          </a>
+        </li> -->
+        <li class="github">
+          <a href="http://github.com/3mmasun" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+        </li>
+        <!-- <li class="linkedin">
+          <a href="https://in.linkedin.com/in/" target="_blank">
+            <i class="fa fa-linkedin"></i>
+          </a>
+        </li> -->
+        <li class="email">
+          <a href="mailto:emmasun.c@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2020
+        &copy;
+        Emma Sun</p>
+    </div>
+  </footer>
+  <!-- End Footer -->
+</aside>
+<!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">Quorum in Distributed Computing</h1>
+        <div class="page-date"><span>2020, Mar 12&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <h1 id="quorum">Quorum</h1>
+
+<p>Quorum <a href="https://dictionary.cambridge.org/dictionary/english/quorum">general definition</a>:</p>
+
+<blockquote>
+  <p>The smallest number of people needed to be present at a meeting before it can officially begin.</p>
+</blockquote>
+
+<h1 id="replication">Replication</h1>
+
+<p>In distributed computing, the same data is copied to multiple machines connected via a network.</p>
+
+<p>In a leaderless configuration, which means all requests are sent to all nodes, how can we be sure that the values we read is always <strong>up-to-date</strong>?</p>
+
+<blockquote>
+  <p>up-to-date read will return the value of lastest write</p>
+</blockquote>
+
+<p>Keeping in mind that all nodes are operating independently with their own database. They could also gone offline or become unreachable due to network issues. There are plenty possibilities that things can go wrong.</p>
+
+<p>A diagram illustrating a write operation, but only 2 out of the 3 nodes acknowledged.</p>
+
+<p><img src="/assets/img/W.jpeg" alt="write" /></p>
+
+<p>A diagram illustrating a read operation, similarly only 2 out of the 3 nodes responded.</p>
+
+<p><img src="/assets/img/R.jpeg" alt="read" /></p>
+
+<h1 id="quorum-in-distributed-computing">Quorum in Distributed Computing</h1>
+
+<p>Extend the concept to <strong>distributed computing</strong>, it refers to the smallest number of acknowledgement/response required in a cluster for an operation to be successful, or service to be availabe.</p>
+
+<ul>
+  <li>Let N be the number of nodes in a cluster</li>
+  <li>Let W be the minimum number of nodes acknowledged WRITE success</li>
+  <li>Let R be the minimum number of nodes responded to READ</li>
+</ul>
+
+<p>Then, when <strong>R + W &gt; N</strong>, we are sure that at least 1 node will return up-to-date reads.</p>
+
+<p>R and W are essentially the <strong>Quorum for Read and Write</strong></p>
+
+<p>Eg: Let’s say N = 3, we have 3 nodes (A, B, C), and we configure W = R = 2:</p>
+
+<ul>
+  <li>during a write request, if we receive acknowledgment from A and B, then a read operation from any of the 2 nodes (A &amp; B, A &amp; C, B &amp; C) will have at least one response that’s up-to-date.</li>
+</ul>
+
+<h1 id="how-to-choose-w-and-r">How to choose W and R</h1>
+
+<p>It depends on your application. A better question to ask would be, is the system <em>read intensive</em> or <em>write intensive</em>?</p>
+
+<p>In a cluster of 3 nodes, if our system is <em>read intensive</em>, we can configure R=1, and W=3. So that, even 2 out of 3 nodes are down, read operations can still function as normal. It also speed up the read. However, W=3 requires all the nodes to acknowledge writes, that means if one node is down, no more writes will be available.</p>
+
+<p>In comparison, if our system is <em>write intensive</em>, one might consider a configuration with W=1, and R=3.</p>
+
+<h1 id="why-n-is-usually-odd-number">Why N is usually odd number?</h1>
+
+<p>Usually a cluster consist of odd number of nodes, 3 and 5 are most commonly seen. But why is that so?</p>
+
+<p>If N=4 and we want to have least one node return up-to-date result, we must have R + W &gt; 4</p>
+
+<ul>
+  <li>if we configure R=3 and W=2, we can only loose one and still have quorum for both Read and Write. If we loose 2 nodes, then write operations will not be available.</li>
+  <li>if we configure R=W=3, and we lose 2 nodes, the system will come to a complete halt. Client can neither read nor write.</li>
+</ul>
+
+<p>In comparison, if N=3, R=W=2, the maximum number of node we can loose is also 1.
+Similarly, a cluster of 5 nodes and 6 nodes can tolerate maximum 2 faulty nodes.</p>
+
+<p>Generally, if N is odd number, then a cluster of N nodes and N+1 nodes gives the same level of tolerance for faulty node. And thus, a cluster has usually N nodes where N is an odd number. Fewer nodes are easier to maintain and less costly.</p>
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=Quorum in Distributed Computing&url=/quorum/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=/quorum/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=/quorum/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+            <a href="/tags#distributed-computing" class="tag">&#35; distributed-computing</a>
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>

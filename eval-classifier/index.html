@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Metrics used to evaluate a classifier - Emma's Blog</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="Emma's Blog" property="og:site_name">
+  
+    <meta content="Metrics used to evaluate a classifier" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="Explore the ways a classifier can be evaluated" property="og:description">
+  
+  
+    <meta content="/eval-classifier/" property="og:url">
+  
+  
+    <meta content="2020-02-14T07:00:00+00:00" property="article:published_time">
+    <meta content="/about/" property="article:author">
+  
+  
+    <meta content="/assets/img/emma.jpg" property="og:image">
+  
+  
+    
+  
+  
+    
+    <meta content="statistics" property="article:tag">
+    
+    <meta content="ml-metrics" property="article:tag">
+    
+    <meta content="classification" property="article:tag">
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@3mmasun# add your Twitter handle">
+  
+    <meta name="twitter:title" content="Metrics used to evaluate a classifier">
+  
+  
+    <meta name="twitter:url" content="/eval-classifier/">
+  
+  
+    <meta name="twitter:description" content="Explore the ways a classifier can be evaluated">
+  
+  
+    <meta name="twitter:image:src" content="/assets/img/emma.jpg">
+  
+
+	<meta name="description" content="Explore the ways a classifier can be evaluated">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/favicon-32x32.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicon/apple-touch-icon.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/"><img src="/assets/img/emma.jpg" alt="Emma Sun"></a>
+      </div>
+      <div class="author-name">Emma Sun</div>
+      <p>I am an Application Developer, exploring Data Engineering recently.</p>
+    </div>
+  </header>
+  <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contact me</h3>
+      <ul>
+        <li>
+          <a href="https://twitter.com/3mmasun# add your Twitter handle" target="_blank">
+            <i aria-hidden="true" class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="https://facebook.com/" target="_blank">
+            <i aria-hidden="true" class="fa fa-facebook"></i>
+          </a>
+        </li> -->
+        <li class="github">
+          <a href="http://github.com/3mmasun" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+        </li>
+        <!-- <li class="linkedin">
+          <a href="https://in.linkedin.com/in/" target="_blank">
+            <i class="fa fa-linkedin"></i>
+          </a>
+        </li> -->
+        <li class="email">
+          <a href="mailto:emmasun.c@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2020
+        &copy;
+        Emma Sun</p>
+    </div>
+  </footer>
+  <!-- End Footer -->
+</aside>
+<!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">Metrics used to evaluate a classifier</h1>
+        <div class="page-date"><span>2020, Feb 14&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <h1 id="terms-and-metrics">Terms and Metrics</h1>
+
+<h2 id="accuracy">Accuracy</h2>
+
+<p>Among <em>all predictions</em>, how many did we get it right?</p>
+
+<blockquote>
+  <p>Accuracy = (TP+TN) / ( TP+TN+FP+FN )</p>
+</blockquote>
+
+<h2 id="precision">Precision</h2>
+
+<p>Among all the POSTIVE predictions, how many are correct?</p>
+
+<blockquote>
+  <p>Precision = TP / ( TP+ NP )</p>
+</blockquote>
+
+<h2 id="recall-aka-sensitivity-aka-true-postive-rate">Recall (aka Sensitivity, aka True Postive Rate)</h2>
+
+<p>Among all POSITIVE samples, how many did we get it right?</p>
+
+<blockquote>
+  <p>Recall = TP / ( TP+FN )</p>
+</blockquote>
+
+<p>None of the scores alone can determine how good a model performs. There is always a trade off between precision and recall.</p>
+
+<p><img src="/assets/img/recall-vs-precision.png" alt="recall-over-precision" /></p>
+
+<h3 id="when-do-we-prefer-high-precision">When do we prefer high precision?</h3>
+
+<p>When we cannot affort the mistake of False Postive. Eg, detecting whether a video is safe for children.</p>
+
+<p>Another way of thinking is that, we are more <em>reluctant</em> to label things as POSITIVE</p>
+
+<h3 id="when-do-we-prefer-high-recall">When do we prefer high recall?</h3>
+
+<p>When we can affort some mistakes in our predictions for TRUE cases. Eg, video that detects shoplifters, we rather to have some false alarms than to miss out any potential shoplifters.</p>
+
+<p>Another way of thinking is that, we are more <em>willing</em> to label things as POSITIVE</p>
+
+<h2 id="f1-score">F1 score</h2>
+
+<p>The harmonic mean of Precision and Recall.
+It’s a score that can tell you how both Precision and Recall are doing.</p>
+
+<p><img src="/assets/img/F1.png" alt="F1" /></p>
+
+<p>A harmonic mean give much more weight to a low value, here is why:</p>
+
+<ul>
+  <li>(1 / precision) ranges from 0 to 1, same for (1 / recall)</li>
+  <li>high <em>precision</em> of nearly 0.99 could mean that recall might fall below 0.1</li>
+  <li>if recall is 0.1, then (1 / recall) become very large, and thus the entire F1 score becomes small</li>
+</ul>
+
+<h3 id="when-do-we-get-high-f1-score">When do we get high F1 score?</h3>
+
+<p>When both recall and precision are high!
+Thus, F1 is a better evaluation simply because the score tell how both recall and precision are doing.</p>
+
+<h2 id="roc---auc">ROC - AUC</h2>
+
+<p>Receiver operating characteristic (ROC) curve is ploting TPR (TruePositiveRate) against FPR (FalsePostiveRate).</p>
+
+<blockquote>
+  <p>FPR (aka Specificty) = 1 - TrueNegativeRate = 1 - [ TN / (TN + FP) ]</p>
+</blockquote>
+
+<p>A perfect classifier would have the Area Under Curve (AUC) equal to 1 whereas a random classifier would have AUC equal to 0.5</p>
+
+<p><img src="/assets/img/roc-auc.png" alt="roc-auc" /></p>
+
+<p>Reference: <a href="https://www.amazon.sg/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291/ref=asc_df_1491962291/?tag=googleshoppin-22&amp;linkCode=df0&amp;hvadid=389049662104&amp;hvpos=&amp;hvnetw=g&amp;hvrand=5234344636738257138&amp;hvpone=&amp;hvptwo=&amp;hvqmt=&amp;hvdev=c&amp;hvdvcmdl=&amp;hvlocint=&amp;hvlocphy=9062530&amp;hvtargid=pla-337511948612&amp;psc=1">Hands-On Machine Learning with Scikit-Learn &amp; TensorFlow</a></p>
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=Metrics used to evaluate a classifier&url=/eval-classifier/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=/eval-classifier/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=/eval-classifier/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+            <a href="/tags#statistics" class="tag">&#35; statistics</a>
+          
+            <a href="/tags#ml-metrics" class="tag">&#35; ml-metrics</a>
+          
+            <a href="/tags#classification" class="tag">&#35; classification</a>
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>

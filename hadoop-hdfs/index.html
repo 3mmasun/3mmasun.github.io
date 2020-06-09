@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Setup Hadoop HDFS Locally - Emma's Blog</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="Emma's Blog" property="og:site_name">
+  
+    <meta content="Setup Hadoop HDFS Locally" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="local setup" property="og:description">
+  
+  
+    <meta content="/hadoop-hdfs/" property="og:url">
+  
+  
+    <meta content="2020-02-19T03:00:00+00:00" property="article:published_time">
+    <meta content="/about/" property="article:author">
+  
+  
+    <meta content="/assets/img/emma.jpg" property="og:image">
+  
+  
+    
+  
+  
+    
+    <meta content="data-engineering" property="article:tag">
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@3mmasun# add your Twitter handle">
+  
+    <meta name="twitter:title" content="Setup Hadoop HDFS Locally">
+  
+  
+    <meta name="twitter:url" content="/hadoop-hdfs/">
+  
+  
+    <meta name="twitter:description" content="local setup">
+  
+  
+    <meta name="twitter:image:src" content="/assets/img/emma.jpg">
+  
+
+	<meta name="description" content="local setup">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/favicon-32x32.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicon/apple-touch-icon.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/"><img src="/assets/img/emma.jpg" alt="Emma Sun"></a>
+      </div>
+      <div class="author-name">Emma Sun</div>
+      <p>I am an Application Developer, exploring Data Engineering recently.</p>
+    </div>
+  </header>
+  <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contact me</h3>
+      <ul>
+        <li>
+          <a href="https://twitter.com/3mmasun# add your Twitter handle" target="_blank">
+            <i aria-hidden="true" class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="https://facebook.com/" target="_blank">
+            <i aria-hidden="true" class="fa fa-facebook"></i>
+          </a>
+        </li> -->
+        <li class="github">
+          <a href="http://github.com/3mmasun" target="_blank">
+            <i class="fa fa-github"></i>
+          </a>
+        </li>
+        <!-- <li class="linkedin">
+          <a href="https://in.linkedin.com/in/" target="_blank">
+            <i class="fa fa-linkedin"></i>
+          </a>
+        </li> -->
+        <li class="email">
+          <a href="mailto:emmasun.c@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2020
+        &copy;
+        Emma Sun</p>
+    </div>
+  </footer>
+  <!-- End Footer -->
+</aside>
+<!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">Setup Hadoop HDFS Locally</h1>
+        <div class="page-date"><span>2020, Feb 19&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <h1 id="brief-notes">Brief notes</h1>
+
+<h2 id="namenode">namenode</h2>
+
+<p>Namenode store meta data of all files of the all the datanodes in its cluster. The information is usually loaded into memory so thus the machine is memory intensive. Thus creating small files is not good practice as it would quickly eat up the memory in the Namenode. Even though datanodes are far from their storing capacity, no more files can be saved due to the lack of memory in namenode.</p>
+
+<h2 id="datanode">datanode</h2>
+
+<p>Datanode is IO intensive. It writes file partion to disk and then copies to another datanode as replica.</p>
+
+<h2 id="secondarynamenode">secondaryNameNode</h2>
+
+<p>Though the name suggests that secondaryNameNode is shadowing the primary namenode, its real job is <strong>housekeeping</strong>. It works with FsImage file and edits logs to make sure namenode can recover the information if it fails.</p>
+
+<h2 id="standbynamenode">standbyNamenode</h2>
+
+<p>A real-time standby Namenode that is in-sync with the primay namenode. Usually standbyNamenode and primaryNamenode will both subscribe from a journal manager (JM). Multiple JMs needs to be setup to establish quoram. This ensures the JM does not become the single point of failure.</p>
+
+<h1 id="hdfs-well-explained">HDFS well explained</h1>
+
+<p><a href="https://wiki.scc.kit.edu/gridkaschool/upload/1/18/Hdfs-cartoon.pdf">Cartoon version</a></p>
+
+<h2 id="text-version">Text version</h2>
+
+<h3 id="write-operation">Write operation</h3>
+
+<ul>
+  <li>client initiate a request to namenode, stating the block size, file fize</li>
+  <li>namenode reply with list of datanodes for each partition</li>
+  <li>client starts transfer to 1st datanode for each partition</li>
+  <li>datanode writes into disk and copy to other datanodes</li>
+  <li>all datanodes inform namenode that they have completed the write operation</li>
+  <li>namenode writes metadata of and close file</li>
+  <li>namenode inform client write is completed and successful</li>
+</ul>
+
+<h1 id="local-setup">local setup</h1>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># gen key</span>
+ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-P</span> <span class="s1">''</span>
+<span class="nb">cat</span> ~/.ssh/id_rsa.pub <span class="o">&gt;&gt;</span> ~/.ssh/authorized_keys
+<span class="nb">chmod </span>0600 ~/.ssh/authorized_keys
+<span class="c"># setup</span>
+<span class="nb">tar</span> <span class="nt">-xzf</span> hadoop-3.2.1.tar.gz
+<span class="nb">rm </span>hadoop-3.2.1.tar.gz
+<span class="nb">mv </span>hadoop-3.2.1 hadoop
+<span class="nb">chmod</span> <span class="nt">-R</span> 755 hadoop
+<span class="c"># .zshrc</span>
+<span class="nb">export </span><span class="nv">HADOOP_HOME</span><span class="o">=</span>~/hadoop
+<span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span><span class="sb">`</span>/usr/libexec/java_home <span class="nt">-v</span> 1.8<span class="sb">`</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$HADOOP_HOME</span>/bin:<span class="nv">$JAVA_HOME</span>/bin
+<span class="c"># working dir</span>
+<span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$HADOOP_HOME</span>/hadoop_store/tmp
+<span class="nb">chmod</span> <span class="nt">-R</span> 755 <span class="nv">$HADOOP_HOME</span>/hadoop_store/tmp
+<span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$HADOOP_HOME</span>/hadoop_store/namenode
+<span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$HADOOP_HOME</span>/hadoop_store/datanode
+<span class="nb">chmod</span> <span class="nt">-R</span> 755 <span class="nv">$HADOOP_HOME</span>/hadoop_store/namenode
+<span class="nb">chmod</span> <span class="nt">-R</span> 755 <span class="nv">$HADOOP_HOME</span>/hadoop_store/datanode
+<span class="nb">cp</span> ~/hadoopconfig/<span class="k">*</span> <span class="nv">$HADOOP_HOME</span>/etc/hadoop
+<span class="c"># start hdfs</span>
+ssh localhost
+hdfs namenode <span class="nt">-format</span>
+hdfs dfs <span class="nt">-mkdir</span> /user
+sbin/start-all.sh
+</code></pre></div></div>
+
+<h3 id="reference">Reference</h3>
+
+<p><a href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html">hadoop single cluster setup</a></p>
+
+<p><a href="https://medium.com/@thedsa.in/install-hadoop-3-2-setting-up-a-single-node-hadoop-cluster-22a5754bd9fc">single node setup by @thedsa.in</a></p>
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=Setup Hadoop HDFS Locally&url=/hadoop-hdfs/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=/hadoop-hdfs/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=/hadoop-hdfs/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+            <a href="/tags#data-engineering" class="tag">&#35; data-engineering</a>
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>
